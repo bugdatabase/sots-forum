@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOTS · Stage 2 Private Forum</title>
+  <meta name="description" content="Society of the Sane · Stage 2 private forum(HTML-first).">
+  <link rel="stylesheet" href="sots-style.css">
+  <!--
+    Focus: semantics, accessibility, and clear hooks for later CSS/JS.
+    Lore notes:
+      - Stage 2 is an online private forum.
+      - Members keep "receipts" by printing posts and deleting them afterward.
+      - Visual motifs: lavender gloves, white boots; user prefers copper & steel vintage-futurism later in CSS.
+  -->
+</head>
+<body>
+  <a href="#content" class="skip-link">Skip to content</a>
+  <noscript>Note: JavaScript is not required for this HTML scaffold. Interactivity will be added later.</noscript>
+
+  <header role="banner" aria-label="Site header">
+    <h1 id="site-title">Society of the Sane</h1>
+    <p id="site-subtitle">Stage 2 · Private Forum</p>
+
+    <!-- Manifesto snippet (kept short on landing; link to full text below) -->
+    <blockquote id="manifesto-teaser">
+  <p>
+    We welcome those who feel unheard, overlooked, or cast aside.  
+    Here, your thoughts can rest without judgment, your words can linger without interruption,  
+    and your voice is held with care.  
+  </p>
+  <p>
+    Fret not about the loud, the needy, the authoritarians, the fear. You are a gift to not be taken for granted and to not be overreacted to. 
+  </p>
+  <cite>—SaraT</cite>
+</blockquote>
+
+    <nav aria-label="Primary navigation">
+      <ul>
+        <li><a href="#threads">Threads</a></li>
+        <li><a href="#compose">New Post</a></li>
+        <li><a href="#auth">Sign In</a></li>
+        <li><a href="#full-manifesto">Manifesto</a></li>
+        <li><a href="#help">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="content" tabindex="-1">
+    <!-- Privacy / receipts banner -->
+    <section id="receipts" aria-label="Receipts policy">
+      <h2>Receipts Policy</h2>
+      <p>
+        Stage 2 practice: members print their ventings and findings, then delete digital posts. Use
+        <a href="#printable">Printable View</a> before purging. Admins can remove content on request.
+      </p>
+    </section>
+
+    <!-- Authentication (non-functional placeholders) -->
+    <section id="auth" aria-label="Authentication">
+      <h2>Member Access</h2>
+      <div class="auth-grid">
+        <form id="signin-form" method="post" action="#" aria-describedby="signin-help">
+          <fieldset>
+            <legend>Sign In</legend>
+            <label for="signin-handle">Handle</label>
+            <input id="signin-handle" name="handle" type="text" autocomplete="username" required>
+            <label for="signin-pass">Passphrase</label>
+            <input id="signin-pass" name="passphrase" type="password" autocomplete="current-password" required>
+            <button type="submit" aria-label="Sign in (placeholder)">Sign In</button>
+          </fieldset>
+          <p id="signin-help">This is a placeholder form—wire up in a later step.</p>
+        </form>
+
+        <form id="register-form" method="post" action="#" aria-describedby="register-help">
+          <fieldset>
+            <legend>Request Invite</legend>
+            <label for="reg-handle">Preferred Handle</label>
+            <input id="reg-handle" name="handle" type="text" required>
+            <label for="reg-email">Contact Email</label>
+            <input id="reg-email" name="email" type="email" required>
+            <label for="reg-motive">Motive (short)</label>
+            <textarea id="reg-motive" name="motive" rows="3" maxlength="300" placeholder="Why do you want to join?"></textarea>
+            <button type="submit" aria-label="Request invite (placeholder)">Request Invite</button>
+          </fieldset>
+          <p id="register-help">Invites are manual in Stage 2; applications are reviewed offline.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Search and filters -->
+    <section id="search" aria-label="Search and filters">
+      <h2>Search</h2>
+      <form id="search-form" method="get" action="#threads">
+        <label for="q">Query</label>
+        <input id="q" name="q" type="search" placeholder="Find posts, tags, or users">
+        <label for="tag">Tag</label>
+        <input id="tag" name="tag" type="text" placeholder="#vent #finding #receipt">
+        <label for="sort">Sort</label>
+        <select id="sort" name="sort">
+          <option value="latest">Latest</option>
+          <option value="top">Top</option>
+          <option value="replies">Most Replies</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <!-- Threads list -->
+    <section id="threads" aria-label="Threads">
+      <h2>Threads</h2>
+      <p role="status">3 threads shown (sample data).</p>
+      <ol class="thread-list">
+        <li class="thread" data-thread-id="t-001">
+          <a href="#thread-view" aria-describedby="t-001-meta">
+            <h3 class="thread-title">First receipt from Stage 2</h3>
+          </a>
+          <p id="t-001-meta" class="thread-meta">
+            by <a href="#profile-sara">SaraT</a> · 2004-06-17 · tags: <a href="#tag">#receipt</a>, <a href="#tag">#vent</a> · 5 replies
+          </p>
+          <p class="thread-excerpt">We decided to keep paper copies. The printer jammed three times, but it felt right…</p>
+        </li>
+
+        <li class="thread" data-thread-id="t-002">
+          <a href="#thread-view" aria-describedby="t-002-meta">
+            <h3 class="thread-title">Moderation checklist (non-violent language)</h3>
+          </a>
+          <p id="t-002-meta" class="thread-meta">
+            by <a href="#profile-warden">Warden</a> · 2005-01-03 · tags: <a href="#tag">#policy</a>, <a href="#tag">#language</a> · 2 replies
+          </p>
+          <p class="thread-excerpt">Drafting a lexicon we won’t use and alternatives that keep us “sane” in tone…</p>
+        </li>
+
+        <li class="thread" data-thread-id="t-003">
+          <a href="#thread-view" aria-describedby="t-003-meta">
+            <h3 class="thread-title">Rural entrance rumors (off-topic)</h3>
+          </a>
+          <p id="t-003-meta" class="thread-meta">
+            by <a href="#profile-moth">Moth</a> · 2006-09-12 · tags: <a href="#tag">#rumor</a>, <a href="#tag">#stage3</a> · 12 replies
+          </p>
+          <p class="thread-excerpt">Someone said there’s a hatch near the old cedar grove. That’s not even our timeline…</p>
+        </li>
+      </ol>
+
+      <!-- Pagination stub -->
+      <nav aria-label="Threads pagination">
+        <ul class="pagination">
+          <li><a href="#threads" aria-label="Previous page">« Prev</a></li>
+          <li><a href="#threads" aria-current="page">1</a></li>
+          <li><a href="#threads">2</a></li>
+          <li><a href="#threads">3</a></li>
+          <li><a href="#threads" aria-label="Next page">Next »</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Single thread view (static example) -->
+    <section id="thread-view" aria-label="Thread view">
+      <h2>First receipt from Stage 2</h2>
+
+      <article class="post" data-post-id="p-001">
+        <header class="post-header">
+          <h3>We bought a laser printer.</h3>
+          <p class="post-meta">
+            Posted by <a href="#profile-sara" class="author">SaraT</a> on <time datetime="2004-06-17">June 17, 2004</time>
+            · tags: <a href="#tag">#receipt</a>, <a href="#tag">#vent</a>
+          </p>
+        </header>
+        <div class="post-body">
+          <p>The box smelled like hot dust. We print, we staple, we file, we breathe. Then we delete.</p>
+        </div>
+
+        <!-- Printable block (duplicated below in a dedicated section) -->
+        <aside class="post-controls" aria-label="Post controls">
+          <a href="#printable" class="print-link">Printable view</a> ·
+          <a href="#purge" class="purge-link">Request purge</a> ·
+          <a href="#report" class="report-link">Report</a>
+        </aside>
+      </article>
+
+      <section class="replies" aria-label="Replies">
+        <h3>Replies (5)</h3>
+        <ol class="reply-list">
+          <li class="reply" data-reply-id="r-001">
+            <p class="reply-meta">by <a href="#profile-warden">Warden</a> · <time datetime="2004-06-18">2004-06-18</time></p>
+            <p>Use clip corners so staples don’t tear sleeves. Lavender gloves snag less.</p>
+          </li>
+          <li class="reply" data-reply-id="r-002">
+            <p class="reply-meta">by <a href="#profile-moth">Moth</a> · <time datetime="2004-06-19">2004-06-19</time></p>
+            <p>Make two copies: one sealed, one for quick reference.</p>
+          </li>
+          <!-- more replies later -->
+        </ol>
+      </section>
+    </section>
+
+    <!-- Compose new post (non-functional) -->
+    <section id="compose" aria-label="Compose new post">
+      <h2>New Post</h2>
+      <form id="compose-form" method="post" action="#" aria-describedby="compose-help">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" maxlength="120" required>
+
+        <label for="body">Body</label>
+        <textarea id="body" name="body" rows="8" required placeholder="Share a venting or a finding…"></textarea>
+
+        <label for="tags">Tags (comma-separated)</label>
+        <input id="tags" name="tags" type="text" placeholder="receipt, vent, policy">
+
+        <fieldset>
+          <legend>Safety</legend>
+          <label>
+            <input type="checkbox" name="nonviolent-language" checked>
+            I confirm this post avoids violent language and slurs.
+          </label>
+          <label>
+            <input type="checkbox" name="print-intent">
+            Mark for printable receipt.
+          </label>
+        </fieldset>
+
+        <button type="submit" aria-label="Publish (placeholder)">Publish</button>
+      </form>
+      <p id="compose-help">Publishing will create a thread. Printable versions render below.</p>
+    </section>
+
+    <!-- Printable view (static example) -->
+    <section id="printable" aria-label="Printable view">
+      <h2>Printable View</h2>
+      <article class="print-post" aria-describedby="print-note">
+        <header>
+          <h3>We bought a laser printer.</h3>
+          <p>Author: SaraT · Date: 2004-06-17 · Tags: receipt, vent</p>
+        </header>
+        <hr>
+        <p>The box smelled like hot dust. We print, we staple, we file, we breathe. Then we delete.</p>
+        <hr>
+        <footer>
+          <p id="print-note">Printed copy (for personal records). Handle with care.</p>
+        </footer>
+      </article>
+    </section>
+
+    <!-- Profiles (list, previously static examples) -->
+<section id="member-profiles">
+  <h2>Member Profiles</h2>
+  <ul>
+    <li><a href="profile-sarat.html">SaraT</a></li>
+    <li><a href="profile-warden.html">Warden</a></li>
+    <li><a href="profile-moth.html">Moth</a></li>
+  </ul>
+</section>
+
+    <!-- Full manifesto (anchor target for teaser cite) -->
+    <section id="full-manifesto" aria-label="Manifesto">
+      <h2>Full Manifesto</h2>
+      <p>
+        We the Society of the Sane watch as you tear and yell, grabbing each other and flinging them aggressively as if
+        nothing were to prosper. We wear our deafening headphones and shake our heads, giving up the search from your mind
+        and logic before the search even started. We will give up on violence and shut down. We walk away as you throw your
+        pitiful symphony of clicks, snarls and growls.
+      </p>
+      <p>
+        We watch as you let your violent urges and lust to be correct rebel against your own worth as one of the same
+        species as us. Clicking your claws and snapping your larynx with a growl you can never take back. We will not agree
+        with you, and it is naturally hard to respect you, but we are the Society of the Sane, and we will live instead of
+        survive by respecting you. But we will not listen to you before you listen to us. It is your job to take that first step.
+      </p>
+
+      <h3>Precepts and Tenets</h3>
+      <ul>
+        <li>We believe that having violent tendencies downgrades you as a person</li>
+        <li>Our goal is to evolve as a smarter society and to reach other planets with our grace</li>
+        <li>“True Pacifism”</li>
+        <li>Swearing is a sin and to be looked down upon</li>
+      </ul>
+
+      <h3>Cultural Attire</h3>
+      <ul>
+        <li>Lavender gloves with lacey trims at the wrists</li>
+        <li>Low cut and low heel white boots</li>
+        <li>An ID badge on a lanyard or badge holder with a clip</li>
+      </ul>
+    </section>
+
+    <!-- Help / FAQ -->
+    <section id="help" aria-label="Help">
+      <h2>Help</h2>
+      <details>
+        <summary>How private is Stage 2?</summary>
+        <p>Invite-only. Content may be printed, then digitally purged.</p>
+      </details>
+      <details>
+        <summary>Why printable views?</summary>
+        <p>To keep offline records (“receipts”) consistent with group practice.</p>
+      </details>
+      <details>
+        <summary>What about swearing?</summary>
+        <p>Discouraged per tenets. Posts may be edited or removed for language.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer role="contentinfo" aria-label="Site footer">
+    <p>© Society of the Sane · Stage 2 Forum
+  </p>
+    <p><a href="#auth">Sign in</a> · <a href="#threads">Threads</a> · <a href="#compose">New Post</a></p>
+  </footer>
+
+</body>
+</html>
